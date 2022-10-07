@@ -1,4 +1,13 @@
-////// Submitting a location /////
+//TO DO:
+// [] 
+
+
+//BUGs:
+//
+
+
+////// Submitting a image /////////////////////////
+
 // Get the modal
 let submit_img_modal = document.getElementById("submit-img-modal");
 
@@ -25,7 +34,7 @@ window.onclick = function(event) {
   }
 }
 
-////Editing a location modal ////
+////Editing an image modal ////
 
 
 //for every edit button class in this thing 
@@ -37,6 +46,9 @@ let edit_button = document.getElementById("edit-button-1");
 let edit_img_modal = document.getElementById("edit-img-modal");
 
 let edit_description_text = document.getElementById("edit-img-description");
+let edit_alt_text = document.getElementById("edit-alt-text");
+let edit_img_file = document.getElementById("img-prev");
+
 
 edit_button.addEventListener("click", () => {
   const queryString = new URLSearchParams({'image_id':edit_button.value})
@@ -44,20 +56,18 @@ edit_button.addEventListener("click", () => {
   fetch(url)
   .then((response) => response.json())
   .then((image_details) => {
+    edit_img_file.innerHTML += `<img src = '${image_details[0]['image_src']}' style = "height: 100px;">`
+    edit_alt_text.value += image_details[0]['alt_text']
     edit_description_text.value += image_details[0]['description']
     edit_img_modal.style.display = 'block';
   }) 
 
 })
 
-
-
 let edit_span = document.getElementsByClassName("close")[1];
 
 edit_span.onclick = function(){
-  edit_loc_modal.style.display = "none";
+  edit_img_modal.style.display = "none";
  
 }
-//When the user clicks on edit location
-//Get location id
-//Edit location id
+
