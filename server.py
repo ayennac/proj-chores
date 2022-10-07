@@ -8,7 +8,7 @@ from jinja2 import StrictUndefined
 
 import cloudinary.uploader
 
-# import crud
+import crud
 
 from model import connect_to_db, db, Image, User
 
