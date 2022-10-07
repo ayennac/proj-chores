@@ -22,6 +22,10 @@ def get_user_by_username(username):
     """Return a user from username"""
     return User.query.filter(User.username == username).first()
 
+def get_user_by_email(email):
+    """Return a  user from email"""
+    return User.query.filter(User.email == email).first()
+
 def get_random_user():
     """Return a random user"""
     users = get_all_users()

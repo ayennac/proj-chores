@@ -27,6 +27,32 @@ def show_homepage():
 
     return render_template("home.html")
 
+
+@app.route('/signup', methods=["GET"])
+def show_signup():
+    """Show sign up"""
+    return render_template("signup.html")
+
+@app.route('/user-signup', methods=['POST'])
+def signup_user():
+    """Sign up user"""
+
+    fname = request.json.get('firstname')
+    lname = request.json.get('lastname')
+    username = request.json.get('username')
+    email = request.json.get('email')
+    password = request.json.get('signpassword')
+    if crud.get_user_by_email(email):
+        flash("Email address already in use. Please log in with your username")
+    if crud.get_user_by_username(username):
+        flash("Username already in use. Please log in with your username")
+    else:
+        new_user = crud.create_new_user(username, fname, lname, email, password)
+        db.session.add(new_user)
+        db.session.commit()
+        flash("Account was made")
+    return jsonify({'code': 'result_code'})
+
 @app.route('/login', methods=['GET'])
 def show_login():
     """Show login page"""
