@@ -47,6 +47,18 @@ def login_user():
         flash('Not logged in!')
     return jsonify({'code': 'result_code'})
 
+    
+@app.route("/logout")
+def process_logout():
+    """Log user out."""
+
+    del session["user_id"]
+    flash("Logged out.")
+    return redirect("/")
+
+
+
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(host="0.0.0.0", debug=True)
+
