@@ -37,11 +37,12 @@ window.onclick = function(event) {
 ////Editing an image modal ////
 
 
+let edit_button = document.getElementById("edit-button-1");
+
+//get all the edit buttons 
 //for every edit button class in this thing 
 // get the element
 // add an eventlistener to the element
-
-let edit_button = document.getElementById("edit-button-1");
 
 let edit_img_modal = document.getElementById("edit-img-modal");
 
@@ -49,20 +50,30 @@ let edit_description_text = document.getElementById("edit-img-description");
 let edit_alt_text = document.getElementById("edit-alt-text");
 let edit_img_file = document.getElementById("img-prev");
 
+let edit_buttons = document.getElementsByClassName("edit-button");
+console.log(edit_buttons)
 
-edit_button.addEventListener("click", () => {
-  const queryString = new URLSearchParams({'image_id':edit_button.value})
-  const url = `/view-image?${queryString}`;
-  fetch(url)
-  .then((response) => response.json())
-  .then((image_details) => {
-    edit_img_file.innerHTML += `<img src = '${image_details[0]['image_src']}' style = "height: 100px;">`
-    edit_alt_text.value += image_details[0]['alt_text']
-    edit_description_text.value += image_details[0]['description']
-    edit_img_modal.style.display = 'block';
-  }) 
+// console.log(edit_buttons)
 
-})
+for (edit_button of edit_buttons){
+  const my_button = edit_button
+  my_button.addEventListener("click", () => {
+    console.log(my_button)
+    const queryString = new URLSearchParams({'image_id':my_button.value})
+    // console.log(edit_button.value)
+    const url = `/view-image?${queryString}`;
+    fetch(url)
+    .then((response) => response.json())
+    .then((image_details) => {
+      edit_img_file.innerHTML += `<img src = '${image_details[0]['image_src']}' style = "height: 100px;">`
+      edit_alt_text.value += image_details[0]['alt_text']
+      edit_description_text.value += image_details[0]['description']
+      edit_img_modal.style.display = 'block';
+    }) 
+  })
+}
+
+
 
 let edit_span = document.getElementsByClassName("close")[1];
 
