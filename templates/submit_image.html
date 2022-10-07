@@ -1,0 +1,55 @@
+{%block submit_image_modal%}
+
+<div id="submit-img-modal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form action ="/new-image" method='POST' enctype="multipart/form-data">
+          <div class="form-group">
+              <label for="input-img">Image</label>
+              <input type="file" name="input-img" class="form-control" id="input-img">
+          </div>
+          <div class="form-group">
+            <label for="alt-text">Alt text</label>
+            <input type="text" name = "alt-text" class="form-control" id="alt-text">
+        </div>
+          <div class="form-group">
+              <label for="img-description">Description</label>
+              <input type="text" name = "img-description" class="form-control" id="img-description">
+          </div>     
+          <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  
+  </div>
+{%endblock%}
+
+{%block edit_image_modal%}
+<div id="edit-img-modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form action ="/new-location" method='POST' enctype="multipart/form-data">
+          <div class="form-group">
+              <label for="input-img">Image</label>
+              <input type="file" name="input-img" class="form-control" id="edit-img">
+          </div>
+          <div class="form-group">
+            <label for="alt-text">Alt text</label>
+            <input type="text" name = "alt-text" class="form-control" id="edit-alt-text">
+        </div>
+          <div class="form-group">
+              <label for="img-description">Description</label>
+              <input type="text" name = "img-description" class="form-control" id="edit-img-description">
+          </div>     
+          <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  
+  </div>
+
+</div>
+
+
+{%endblock%}

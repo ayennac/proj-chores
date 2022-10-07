@@ -21,6 +21,8 @@ CLOUDINARY_KEY = os.environ['CLOUDINARY_KEY']
 CLOUDINARY_SECRET = os.environ['CLOUDINARY_SECRET']
 CLOUD_NAME = "dvrzkwd2m"
 
+
+
 @app.route('/')
 def show_homepage():
     """Show homepage"""

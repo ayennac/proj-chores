@@ -15,7 +15,7 @@ def get_user_by_user_id(user_id):
     return User.query.filter(User.user_id ==user_id).first()
 
 def get_all_users_images(user_id):
-    """Return all images form a user"""
+    """Return all images from a user"""
     return Image.query.filter(User.user_id ==user_id).all()
 
 def get_all_images():

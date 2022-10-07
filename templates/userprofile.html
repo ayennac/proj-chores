@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block body %}
+<div class="container ">
+  <div class="row">
+    <div class="col">
+      <h1>Hello {{user.fname}} </h1>
+      <p>What would you like to do?</p>
+
+      <h2>User Functions</h2>
+      <!-- Trigger/Open The Modal -->
+      <button id="submit-img-btn">Upload New Moment</button>
+      <h3>Settings</h3>
+      <p>Change email address</p>
+      <p>Delete Account</p>
+      <!-- The Modal -->
+      {% include 'submit_image.html' %}
+      {% block submit_image_modal %}
+      {% endblock %}
+    </div>
+  </div>
+</div>
+
+
+
+<div class = "container">
+  <div class = "row">
+  {% for image in images%}
+  <div class="movie-card col-4"> 
+    <div class="card" >
+      <img class="card-img-top" src="{{image.image_src}}" alt="{{image.alt_text}}"></img>
+        <div class="card-body">
+          <p class="card-text" >{{image.description}}</p>
+          <button id="edit-button-{{image.image_id}}" value="{{image.image_id}}">Edit image</button>
+        </div>
+    </div> 
+  </div>
+  {%endfor%}
+  </div>
+</div>
+
+
+
+
+
+<script src="/static/user-functions.js"></script>
+
+{% endblock %}
