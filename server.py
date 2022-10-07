@@ -27,7 +27,6 @@ def show_homepage():
 
     return render_template("home.html")
 
-
 @app.route('/signup', methods=["GET"])
 def show_signup():
     """Show sign up"""
@@ -58,7 +57,6 @@ def show_login():
     """Show login page"""
     return render_template("login.html")
 
-
 @app.route('/user-login', methods=['POST'])
 def login_user():
     """Login user"""
@@ -73,7 +71,6 @@ def login_user():
         flash('Not logged in!')
     return jsonify({'code': 'result_code'})
 
-    
 @app.route("/logout")
 def process_logout():
     """Log user out."""
@@ -81,6 +78,65 @@ def process_logout():
     del session["user_id"]
     flash("Logged out.")
     return redirect("/")
+
+@app.route('/userprofile')
+def show_user_profile():
+    """Show user profile"""
+    
+    user_id = session.get('user_id')
+    if not user_id:
+        flash("please log in")
+        return redirect('/login')
+
+    user = crud.get_user_by_user_id(user_id)
+    images = crud.get_all_users_images(user_id)
+
+    return render_template('userprofile.html', 
+                            user = user,
+                            images = images)
+
+@app.route('/new-image', methods=['POST'])
+def new_image():
+    user = crud.get_user_by_user_id(session.get('user_id'))
+    img_src = request.files["input-img"]
+    alt_text = request.form.get("alt-text")
+    description = request.form.get("img-description")   
+
+    cloudinary_request = cloudinary.uploader.upload(img_src,
+                                                    api_key=CLOUDINARY_KEY,
+                                                    api_secret=CLOUDINARY_SECRET,
+                                                    cloud_name=CLOUD_NAME)
+    cloudinary_img_src = cloudinary_request['secure_url']
+
+    new_img = crud.create_new_image(user,
+                                    description,
+                                    cloudinary_img_src,
+                                    alt_text,
+                                    False, 
+                                    "Approved",
+                                    True)
+                
+    db.session.add(new_img)    
+    db.session.commit()
+    flash("Added image to database!")
+    return redirect("/userprofile")
+
+
+@app.route('/view-image')
+def view_image():
+    """JSON information about a single image"""
+    image_id = request.args.get("image_id")
+    image = crud.get_image_by_image_id(image_id)
+    image_to_edit = [{"user": image.user_id,
+                    "description": image.description,
+                    "image_src": image.image_src,
+                    "alt_text": image.alt_text,
+                    "submitted": image.submitted,
+                    "submission_status": image.submission_status,
+                    "public":image.public
+                    }] 
+    return jsonify(image_to_edit)
+
 
 
 

@@ -10,9 +10,21 @@ def create_new_user(username, fname, lname, email, password):
     user = User(username=username, fname=fname, lname =lname, email =email, password=password)
     return user
 
+def get_user_by_user_id(user_id):
+    """Return a user from user_id"""
+    return User.query.filter(User.user_id ==user_id).first()
+
+def get_all_users_images(user_id):
+    """Return all images form a user"""
+    return Image.query.filter(User.user_id ==user_id).all()
+
 def get_all_images():
     """Return a list of images"""
     return Image.query.all()
+
+def get_image_by_image_id(image_id):
+    """Return an image from image_id"""
+    return Image.query.filter(Image.image_id ==image_id).first()
 
 def get_all_users():
     """Return a list of list of users"""
