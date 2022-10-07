@@ -16,9 +16,9 @@ class User(db.Model):
                         autoincrement=True,
                         primary_key = True)
     username = db.Column(db.String)
-    first_name = db.Column(db.String)
-    last_name = db.Column(db.String)
-    email_address = db.Column(db.String)
+    fname = db.Column(db.String)
+    lname = db.Column(db.String)
+    email = db.Column(db.String)
     password = db.Column(db.String(128))
     
     images = db.relationship("Image", back_populates="user")
@@ -38,7 +38,7 @@ class Image(db.Model):
                         primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     description = db.Column(db.String)
-    photo = db.Column(db.String)
+    image_src = db.Column(db.String)
     alt_text = db.Column(db.String)
     submitted = db.Column(db.Boolean)
     submission_status = db.Column(db.String)

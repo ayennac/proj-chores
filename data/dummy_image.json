@@ -1,0 +1,22 @@
+[
+    {
+        "image_src": "/static/sample_pic.jpg",
+        "description": "This is a sample pic",
+        "alt_text": "This is the alt text for sample_pic.jpg"
+    },
+    {
+        "image_src": "/static/sample_bird.jpg",
+        "description": "This is a sample bird pic",
+        "alt_text": "This is the alt text for sample_bird.jpg"
+    },
+    {
+        "image_src": "/static/totoro_cave.gif",
+        "description": "This is the description for totoro_cave.gif",
+        "alt_text": "This is the alt text for totoro_cave.gif"
+    },
+    {
+        "image_src": "/static/howl_mind.webp",
+        "description": "This is the description for howl_mind.webp",
+        "alt_text": "This is the alt text for howl_mind.webp"
+    }
+]

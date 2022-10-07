@@ -1,0 +1,23 @@
+[
+    {
+        "username": "cat_1",
+        "fname": "Harry",
+        "lname": "Jerry",
+        "email": "harry@jerry.com",
+        "password": "harryjerry"
+    },
+    {
+        "username": "dog_1",
+        "fname": "ralph",
+        "lname": "malph",
+        "email": "ralph@malph.com",
+        "password": "ralphmalph"
+    },
+    {
+        "username": "parakeetboi",
+        "fname": "string",
+        "lname": "dude",
+        "email": "string@dude.com",
+        "password": "stringdude"
+    }
+]
