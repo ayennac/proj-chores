@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Mundane{% endblock %}
+
+{% include 'navbar.html' %}
+        {% block navbar %}
+{% endblock %}
+
+{%block body%}
+<div class="container">
+    <div class = "row">
+        <p>Here's where an image should go {{random_image.image_id}}</p>
+    </div>
+</div>
+
+{%endblock%}

@@ -22,6 +22,12 @@ def get_all_images():
     """Return a list of images"""
     return Image.query.all()
 
+def get_random_image():
+    """Return a random image"""
+    images = get_all_images()
+    image_chosen = choice(images)
+    return image_chosen
+
 def get_image_by_image_id(image_id):
     """Return an image from image_id"""
     return Image.query.filter(Image.image_id ==image_id).first()

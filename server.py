@@ -152,8 +152,6 @@ def edit_image():
     return redirect("/userprofile")
 
 
-
-
 @app.route('/view-image')
 def view_image():
     """JSON information about a single image"""
@@ -169,6 +167,14 @@ def view_image():
                     "public":image.public
                     }] 
     return jsonify(image_to_edit)
+
+@app.route('/view-mundane')
+def view_random_image():
+    """Return a random image for a viewer to idly watch"""
+    random_image = crud.get_random_image()
+
+    return render_template("view-mundane.html", random_image = random_image)
+
 
 
 
