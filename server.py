@@ -124,12 +124,43 @@ def new_image():
     return redirect("/userprofile")
 
 
+@app.route('/edit-location', methods=['POST'])
+def edit_image():
+    user = crud.get_user_by_user_id(session.get('user_id'))
+    image_id = request.form.get("edit-img-id")
+
+    image = crud.get_image_by_image_id(image_id)
+    img_src = request.files["edit-img"]
+    alt_text = request.form.get("edit-alt-text")
+    description = request.form.get("edit-img-description")
+
+    cloudinary_request = cloudinary.uploader.upload(img_src,
+                                                    api_key=CLOUDINARY_KEY,
+                                                    api_secret=CLOUDINARY_SECRET,
+                                                    cloud_name=CLOUD_NAME)
+    cloudinary_img_src = cloudinary_request['secure_url']
+
+    
+    image.description = description
+    image.image_src = cloudinary_img_src
+    image.alt_text = alt_text
+
+    db.session.commit()
+
+    flash("Edited image in database!")
+
+    return redirect("/userprofile")
+
+
+
+
 @app.route('/view-image')
 def view_image():
     """JSON information about a single image"""
     image_id = request.args.get("image_id")
     image = crud.get_image_by_image_id(image_id)
     image_to_edit = [{"user": image.user_id,
+                    "image_id": image.image_id,
                     "description": image.description,
                     "image_src": image.image_src,
                     "alt_text": image.alt_text,

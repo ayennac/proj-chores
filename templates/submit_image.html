@@ -33,17 +33,20 @@
       <form action ="/edit-location" method='POST' enctype="multipart/form-data">
           <div class="form-group">
               <div id="img-prev"></div> 
-              <label for="input-img">Image</label>
-              <input type="file" name="input-img" class="form-control" id="edit-img">
+              <label for="edit-img">Image</label>
+              <input type="file" name="edit-img" class="form-control" id="edit-img">
             </div>
           <div class="form-group">
-            <label for="alt-text">Alt text</label>
-            <input type="text" name = "alt-text" class="form-control" id="edit-alt-text" value ="">
+            <label for="edit-alt-text">Alt text</label>
+            <input type="text" name = "edit-alt-text" class="form-control" id="edit-alt-text" value ="">
         </div>
           <div class="form-group">
               <label for="img-description">Description</label>
-              <input type="text" name = "img-description" class="form-control" id="edit-img-description" value="">
-          </div>     
+              <input type="text" name = "edit-img-description" class="form-control" id="edit-img-description" value="">
+          </div>
+          <div class="edit-img-id" style="display:none;">
+            <input type="text" name = "edit-img-id" class="form-control" id="edit-img-id" value="">
+          </div>      
           <button type="submit" class="btn btn-default">Edit Image</button>
       </form>
     </div>

@@ -49,6 +49,8 @@ let edit_img_modal = document.getElementById("edit-img-modal");
 let edit_description_text = document.getElementById("edit-img-description");
 let edit_alt_text = document.getElementById("edit-alt-text");
 let edit_img_file = document.getElementById("img-prev");
+let edit_img_id = document.getElementById("edit-img-id");
+
 
 let edit_buttons = document.getElementsByClassName("edit-button");
 console.log(edit_buttons)
@@ -65,9 +67,10 @@ for (edit_button of edit_buttons){
     fetch(url)
     .then((response) => response.json())
     .then((image_details) => {
-      edit_img_file.innerHTML += `<img src = '${image_details[0]['image_src']}' style = "height: 100px;">`
-      edit_alt_text.value += image_details[0]['alt_text']
-      edit_description_text.value += image_details[0]['description']
+      edit_img_file.innerHTML = `<img src = '${image_details[0]['image_src']}' style = "height: 100px;">`
+      edit_alt_text.value = image_details[0]['alt_text']
+      edit_description_text.value = image_details[0]['description']
+      edit_img_id.value = image_details[0]['image_id']
       edit_img_modal.style.display = 'block';
     }) 
   })
