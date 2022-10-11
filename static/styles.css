@@ -28,6 +28,11 @@ h2.hero-message{
   padding-top:30px;
 }
 
+section#footer{
+  background-color: #355E3B;
+  color: #fefdf5;
+}
+
 section#squiggle-background{
   background-image:url("/static/green-background-squiggle.svg");
   height: 250px;
