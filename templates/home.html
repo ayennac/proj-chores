@@ -5,3 +5,50 @@
 {% include 'navbar.html' %}
         {% block navbar %}
 {% endblock %}
+
+{%block body%}
+<section class="container d-flex justify-content-center align-items-center">
+<div class="row">
+  <div class="col">
+    <h2 class="mx-5 hero-message"> Need some chore motivation? </h2>
+    <a href="view-mundane"type="button" class="mx-5 btn btn-lg" id="view-chores"  >Do chores w/a buddy</a>
+  </div>
+</div>
+</section>
+<section  id = "squiggle-background">
+</section>
+
+<section class ="green-background">
+        <div class="container">
+                <div class="row">
+                        <div class="col">
+                        <h3 class="align-items-center">How it works</h3><hr>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="col-2">
+                                <h4>1</h4>
+                        </div>
+                        <div class="col-2">
+                                <p>Pick your chores</p>
+                        </div>
+                        <div class="col-2">
+                                <h4>2</h4>
+                        </div>
+                        <div class="col-2">
+                                <p>Watch some chores</p>
+                        </div>
+                        <div class="col-2">
+                                <h4>3</h4>
+                        </div>
+                        <div class="col-2">
+                                <p>Do your chores</p>
+                        </div>
+                </div> 
+        </div> 
+</section>
+
+{% include 'footer.html' %}
+        {% block footer %}
+{% endblock %}
+{%endblock%}

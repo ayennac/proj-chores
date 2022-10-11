@@ -40,6 +40,7 @@ class Image(db.Model):
     description = db.Column(db.String)
     image_src = db.Column(db.String)
     alt_text = db.Column(db.String)
+
     submitted = db.Column(db.Boolean)
     submission_status = db.Column(db.String)
     public = db.Column(db.Boolean)

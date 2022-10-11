@@ -4,6 +4,59 @@ body{
 
 
 
+nav .nav-link{
+  font-family: 'Inter Tight', sans-serif;
+  color: #355E3B;
+  font-weight: 400;
+}
+.navbar-nav{
+  text-align: right;
+}
+
+h1{
+  font-family: 'Inter Tight', sans-serif;
+  color: #355E3B;
+  font-weight: 700;
+}
+
+h2{
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 500;
+}
+
+h2.hero-message{
+  padding-top:30px;
+}
+
+section#squiggle-background{
+  background-image:url("/static/green-background-squiggle.svg");
+  height: 250px;
+}
+section.green-background{
+  background-color:#355E3B;
+  font-family:'PT Serif', serif;
+  color: #fefdf5;
+}
+section.green-background h4{
+  text-align: right;
+  }
+section.green-background p{
+align-items: center;
+}
+
+.row{
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+a#view-chores{
+  align-items: center;
+  font-family: 'Inter Tight', sans-serif;
+  background-color: #355E3B;
+  color: white;
+  font-weight: 400;
+  font-size: 14px;
+}
 
 .card .card-img-top{
   width: 100%;
