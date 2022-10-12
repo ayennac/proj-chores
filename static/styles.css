@@ -3,15 +3,17 @@ body{
 }
 
 
-
 nav .nav-link{
   font-family: 'Inter Tight', sans-serif;
   color: #355E3B;
   font-weight: 400;
 }
-.navbar-nav{
-  text-align: right;
+
+nav a{
+  padding-left: 10px;
+  color: #355E3B;
 }
+
 
 h1{
   font-family: 'Inter Tight', sans-serif;
@@ -20,22 +22,32 @@ h1{
 }
 
 h2{
-  font-family: 'Inter Tight', sans-serif;
+  font-family: 'PT Serif', serif;
+  color: #355E3B;
   font-weight: 500;
 }
 
 h2.hero-message{
   padding-top:30px;
 }
+section{
+  padding: 10px 10px;
+}
 
 section#footer{
   background-color: #355E3B;
   color: #fefdf5;
+  font-size: 8px;
 }
 
 section#squiggle-background{
   background-image:url("/static/green-background-squiggle.svg");
-  height: 250px;
+  height: 200px;
+}
+section#squiggle-background-reverse{
+  background-image:url("/static/green-background-squiggle.svg");
+  height: 200px;
+  transform: rotate(180deg);
 }
 section.green-background{
   background-color:#355E3B;
@@ -48,11 +60,13 @@ section.green-background h4{
 section.green-background p{
 align-items: center;
 }
-
-.row{
-  padding-bottom: 20px;
-  padding-top: 20px;
+section#love-chorebuddy{
+  display: flex;
+  padding-top:20px;
+  padding-bottom:20px;
+  
 }
+
 
 a#view-chores{
   align-items: center;
@@ -107,7 +121,7 @@ a#view-chores{
 }
 
 
-
+/*Login form, sign up form, modal*/
 .form {
     display: flex;
     justify-content: center;
@@ -129,7 +143,7 @@ a#view-chores{
     border: 2px solid #f0f0f0;
     border-radius: 3px;
     display: block;
-    font-family: inherit;
+    font-family: 'Inter Tight', sans-serif;
     font-size: 14px;
     padding: 10px;
     width: 100%;
@@ -178,12 +192,12 @@ a#view-chores{
   }
   
   .form button {
-    background-color: #8e44ad;
-    border: 2px solid #8e44ad;
+    background-color: #355E3B;
+    border: 2px solid #355E3B;
     border-radius: 4px;
     color: #fff;
     display: block;
-    font-family: inherit;
+    font-family: 'Inter Tight', sans-serif;
     font-size: 16px;
     padding: 10px;
     margin-top: 20px;
