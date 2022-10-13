@@ -43,16 +43,20 @@ def signup_user():
     username = request.json.get('username')
     email = request.json.get('email')
     password = request.json.get('signpassword')
-    if crud.get_user_by_email(email):
-        flash("Email address already in use. Please log in with your username")
-    if crud.get_user_by_username(username):
-        flash("Username already in use. Please log in with your username")
-    else:
-        new_user = crud.create_new_user(username, fname, lname, email, password)
-        db.session.add(new_user)
-        db.session.commit()
-        flash("Account was made")
-    return jsonify({'code': 'result_code'})
+    try:
+        if crud.get_user_by_email(email):
+            result_code = False
+        if crud.get_user_by_username(username):
+            result_code = False
+        else:
+            new_user = crud.create_new_user(username, fname, lname, email, password)
+            db.session.add(new_user)
+            db.session.commit()
+            flash("Account was made")
+            result_code = True
+    except AttributeError:
+        result_code = False
+    return jsonify({'code': result_code})
 
 @app.route('/login', methods=['GET'])
 def show_login():

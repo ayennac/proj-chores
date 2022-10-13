@@ -4,12 +4,12 @@ const firstname = document.getElementById('first-name');
 const lastname = document.getElementById('last-name');
 const email = document.getElementById('inputemail');
 const signpassword = document.getElementById('inputpassword');
-
-
+const login_error = document.getElementsByClassName("login-error")[0];
 
 form.addEventListener('submit', e => {
 	e.preventDefault();
 	checkInputs();
+	login_error.className = 'login-error'
 	
 	const formInputs = {
 		'username': username.value,
@@ -26,7 +26,17 @@ form.addEventListener('submit', e => {
 	})
 	.then((response) =>response.json())
 	.then((data) => {
-		location.href = '/'
+		if (data['code'] == true){
+			console.log(data['code'])
+			location.href = '/'} else{
+				login_error.textContent = "Username and/or email already in use"
+				login_error.className = 'login-error-show'
+				setErrorFor(username, "")
+				setErrorFor(firstname, "")
+				setErrorFor(lastname,"")
+				setErrorFor(email, "")
+				setErrorFor(signpassword,"")
+			}
 	});
 });
 
