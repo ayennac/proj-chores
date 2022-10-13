@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Page{% endblock %}
+
+{% include 'navbar.html' %}
+        {% block navbar %}
+{% endblock %}
+
+{%block body%}
+<div class = "container">
+    <div class="row">
+        <div class = "col">
+            <table class = "table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Image ID</th>
+                        <th scope="col">User Submitted</th>
+                        <th scope="col">Image description</th>
+                        <th scope="col">Image File</th>
+                        <th scope="col">Image Submitted?</th>
+                        <th scope="col">Submission Status</th>
+                        <th scope="col">Public</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for image in images%}
+                    <tr>
+                        <th scope ="row">{{image.image_id}}</th>
+                        <td>{{image.user.username}}</td>
+                        <td>{{image.description}}</td>
+                        <td>{{image.image_src}}</td>
+                        <td>{{image.submitted}}</td>
+                        <td>
+                            <select name = "submission-status">
+                            <option value ="{{image.submission_status}}">{{image.submission_status}}</option>
+                            <option value = "Pending"> Pending</option>
+                            <option value = "Approved">Approved</option>
+                            <option value = "Not Submitted">Not Submitted</option>
+                            </select>
+                        </td>
+                        <td>{{image.public}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
+
