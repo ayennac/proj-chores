@@ -49,6 +49,7 @@ section#squiggle-background-reverse{
   height: 200px;
   transform: rotate(180deg);
 }
+
 section.green-background{
   background-color:#355E3B;
   font-family:'PT Serif', serif;
@@ -98,7 +99,7 @@ a#view-chores{
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  background-color:#fefdf5;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
@@ -191,7 +192,7 @@ a#view-chores{
     visibility: visible;
   }
   
-  .form button {
+.form button {
     background-color: #355E3B;
     border: 2px solid #355E3B;
     border-radius: 4px;
@@ -203,3 +204,34 @@ a#view-chores{
     margin-top: 20px;
     width: 100%;
   }
+  
+.login-error{
+  visibility:hidden;
+}
+.login-error-show{
+  visibility: visible;
+}
+
+
+.green-button {
+  background-color: #355E3B;
+  border: 2px solid #355E3B;
+  border-radius: 4px;
+  color: #fff;
+  display: block;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 16px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+/*User profile Cards */
+
+.img-card{
+  padding: 10px 10px 10px 10px;
+}
+.card{
+  padding: 10px 10px 10px 10px;
+}
+

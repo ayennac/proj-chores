@@ -64,14 +64,17 @@ def login_user():
     """Login user"""
     username = request.json.get('username')
     password = request.json.get('password')
-    potential_user = crud.get_user_by_username(username)
-
-    if potential_user.password == password:
-        session['user_id'] = potential_user.user_id
-        flash('Logged in!')
-    else:
-        flash('Not logged in!')
-    return jsonify({'code': 'result_code'})
+    try:
+        potential_user = crud.get_user_by_username(username)
+        if potential_user.password == password:
+            session['user_id'] = potential_user.user_id
+            result_code = True
+        else:
+            result_code = False
+    except AttributeError:
+        result_code = False
+    
+    return jsonify({'code': result_code})
 
 @app.route("/logout")
 def process_logout():

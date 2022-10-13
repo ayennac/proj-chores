@@ -1,10 +1,12 @@
 const form = document.getElementById('form');
 const username = document.getElementById('username');
 const password = document.getElementById('password');
+const login_error = document.getElementsByClassName("login-error")[0];
 
 form.addEventListener('submit', e => {
 	e.preventDefault();
 	checkInputs();
+	login_error.className = 'login-error'
 	
 	const formInputs = {
 		'username': username.value,
@@ -18,7 +20,17 @@ form.addEventListener('submit', e => {
 	})
 	.then((response) =>response.json())
 	.then((data) => {
-		location.href = '/'
+		if (data['code'] == true){
+			console.log(data['code'])
+			location.href = '/'
+		} else{
+			console.log(data['code'])
+			console.log(login_error)
+			login_error.className= 'login-error-show'
+			login_error.textContent = "Incorrect username or password"
+			setErrorFor(username, "Check username")
+			setErrorFor(password, "Check password")	
+		}
 	});
 });
 
