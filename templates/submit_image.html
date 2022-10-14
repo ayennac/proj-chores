@@ -19,7 +19,11 @@
           <div class="form-group">
               <label for="img-description">Description</label>
               <input type="text" name = "img-description" class="form-control" id="img-description">
-          </div>     
+          </div>
+          <div class="form-group">
+            <label for="img-submission-public">Submit for Public Viewing</label>
+            <input type="checkbox" name ="img-submitted-public" id="img-submitted-public" value = "True">
+          </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
       </div>
@@ -36,7 +40,7 @@
       <span class="close">&times;</span>
       <div class="form">
       
-      <form action ="/edit-location" method='POST' enctype="multipart/form-data">
+      <form action ="/edit-image" method='POST' enctype="multipart/form-data">
           <div class="form-group">
               <div id="img-prev"></div> 
               <label for="edit-img">Image</label>
@@ -50,8 +54,13 @@
               <label for="img-description">Description</label>
               <input type="text" name = "edit-img-description" class="form-control" id="edit-img-description" value="">
           </div>
+          <div class="form-group">
+            <label for="img-submission">Submit for Public Viewing</label>
+            <input type="checkbox" name ="edit-img-submitted" id="edit-img-submitted" value="True">
+          </div>
+          
           <div class="edit-img-id" style="display:none;">
-            <input type="text" name = "edit-img-id" class="form-control" id="edit-img-id" value="">
+            <input type="text" name = "edit-img-id" id="edit-img-id" value="">
           </div>      
           <button type="submit" class="btn btn-default">Edit Image</button>
       </form>

@@ -7,10 +7,13 @@
 {% endblock %}
 
 {%block body%}
-<div class="container">
-    <div class = "row">
-        <p>Here's where an image should go {{random_image.image_id}}</p>
-    </div>
+
+<div class= "background-video embed-responsive embed-responsive-4by3">
+    <video class="embed-responsive-item" autoplay muted loop>
+    <source src="{{random_image.image_src}}">
+    </video>
 </div>
+
+
 
 {%endblock%}

@@ -68,6 +68,26 @@ section#love-chorebuddy{
   
 }
 
+.background-video {
+  position: relative;
+}
+
+.background-video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  max-width: 100%;
+}
+
+a#watch-chores{
+  background-color: #355E3B;
+  font-family:'Inter Tight', sans-serif;
+  color: #fefdf5;
+  border-style: solid;
+  border-radius: 25px;
+  border-color: #355E3B;
+}
 
 a#view-chores{
   align-items: center;

@@ -6,6 +6,11 @@
     </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ms-auto">
+      {% if(request.path == '/userprofile') or (request.path == '/view-mundane') %}
+      <li class="nav-item">
+        <a class="nav-link" id="watch-chores" href="view-mundane">Watch Chores</a>
+      </li>
+      {% endif %}
       {% if ('user_id' not in session) and (request.path != '/login') and(request.path !='/signup')%}
       <li class="nav-item">
         <a class="nav-link" href="login">Login</a>
@@ -21,8 +26,12 @@
       <li class="nav-item">
         <a class="nav-link" href="userprofile">User Profile</a>
       </li>
+      {% if (session['user_id']==1) %}
+      <li class="nav-item">
+        <a class="nav-link" href="admin">Admin</a>
+      </li>
       {% endif %}
-
+      {% endif %}
     </ul>
   </div>
 </nav>

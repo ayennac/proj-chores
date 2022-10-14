@@ -114,7 +114,8 @@ def new_image():
     user = crud.get_user_by_user_id(session.get('user_id'))
     img_src = request.files["input-img"]
     alt_text = request.form.get("alt-text")
-    description = request.form.get("img-description")   
+    description = request.form.get("img-description")  
+    submit_public = bool(request.form.get("img-submitted-public"))
 
     cloudinary_request = cloudinary.uploader.upload(img_src,
                                                     api_key=CLOUDINARY_KEY,
@@ -126,7 +127,7 @@ def new_image():
                                     description,
                                     cloudinary_img_src,
                                     alt_text,
-                                    False, 
+                                    submit_public, 
                                     "Approved",
                                     True)
                 
@@ -136,7 +137,7 @@ def new_image():
     return redirect("/userprofile")
 
 
-@app.route('/edit-location', methods=['POST'])
+@app.route('/edit-image', methods=['POST'])
 def edit_image():
     user = crud.get_user_by_user_id(session.get('user_id'))
     image_id = request.form.get("edit-img-id")
@@ -145,6 +146,7 @@ def edit_image():
     img_src = request.files["edit-img"]
     alt_text = request.form.get("edit-alt-text")
     description = request.form.get("edit-img-description")
+    submit_public = bool(request.form.get("edit-img-submitted"))
 
     cloudinary_request = cloudinary.uploader.upload(img_src,
                                                     api_key=CLOUDINARY_KEY,
@@ -156,6 +158,7 @@ def edit_image():
     image.description = description
     image.image_src = cloudinary_img_src
     image.alt_text = alt_text
+    image.submitted = submit_public
 
     db.session.commit()
 
