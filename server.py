@@ -169,6 +169,11 @@ def edit_image():
     return redirect("/userprofile")
 
 
+@app.route('/admin-edit-status', methods=['POST'])
+def admin_edit_status():
+    pass
+
+
 @app.route('/view-image')
 def view_image():
     """JSON information about a single image"""
