@@ -60,7 +60,7 @@ for (edit_button of edit_buttons){
     fetch(url)
     .then((response) => response.json())
     .then((image_details) => {
-      edit_img_file.innerHTML = `<img src = '${image_details[0]['image_src']}' style = "height: 100px;">`
+      edit_img_file.innerHTML = `<video src = '${image_details[0]['image_src']}' style = "height: 100px;">`
       edit_alt_text.value = image_details[0]['alt_text']
       edit_description_text.value = image_details[0]['description']
       edit_img_id.value = image_details[0]['image_id']
@@ -77,4 +77,25 @@ edit_span.onclick = function(){
   edit_img_modal.style.display = "none";
  
 }
+
+
+
+
+function handleFiles(event) {
+  const files = event.target.files;
+  //set classname to active class which has the right dimensions
+  //style = "width:300px;height:400px"
+  let canvas = document.getElementById('canvas');
+  let video = document.getElementById("preview-video");
+  
+  video.src = URL.createObjectURL(files[0]);
+  video.load();
+  video.play();
+  // let ctx = canvas.getContext('2d');
+  // ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);  
+  // const thumbnailURL = canvas.toDataURL();
+  // console.log(thumbnailURL);
+}
+
+document.getElementById("input-img").addEventListener("change", handleFiles, false);
 

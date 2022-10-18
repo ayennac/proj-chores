@@ -29,7 +29,7 @@
   {% for image in images%}
   <div class="img-card col-4"> 
     <div class="card" >
-      <img class="card-img-top" src="{{image.image_src}}" alt="{{image.alt_text}}"></img>
+      <video class="card-img-top" src="{{image.image_src}}" alt="{{image.alt_text}}"></video>
         <div class="card-body">
           <p class="card-text" >{{image.description}}</p>
           <button class="edit-button green-button" value="{{image.image_id}}">Edit Video Info</button>

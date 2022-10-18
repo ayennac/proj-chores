@@ -9,6 +9,10 @@
       <div class="form">
       <form action ="/new-image" method='POST' enctype="multipart/form-data">
           <div class="form-group">
+            <div id = "preview-video-div" class="embed-responsive embed-responsive-4by3" >
+            <video id ="preview-video" class="embed-responsive-item" style = "height:100px"> <source type="video/mp4"> </video>
+            <canvas id="canvas"> canvas</canvas>
+            </div>
               <label for="input-img">Image</label>
               <input type="file" name="input-img" class="form-control" id="input-img">
           </div>
