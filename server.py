@@ -120,7 +120,8 @@ def new_image():
     cloudinary_request = cloudinary.uploader.upload(img_src,
                                                     api_key=CLOUDINARY_KEY,
                                                     api_secret=CLOUDINARY_SECRET,
-                                                    cloud_name=CLOUD_NAME)
+                                                    cloud_name=CLOUD_NAME,
+                                                    resource_type = "video")
     cloudinary_img_src = cloudinary_request['secure_url']
 
     new_img = crud.create_new_image(user,
@@ -151,7 +152,8 @@ def edit_image():
     cloudinary_request = cloudinary.uploader.upload(img_src,
                                                     api_key=CLOUDINARY_KEY,
                                                     api_secret=CLOUDINARY_SECRET,
-                                                    cloud_name=CLOUD_NAME)
+                                                    cloud_name=CLOUD_NAME,
+                                                    resource_type = "video")
     cloudinary_img_src = cloudinary_request['secure_url']
 
     
