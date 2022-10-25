@@ -19,7 +19,7 @@ class User(db.Model):
     fname = db.Column(db.String)
     lname = db.Column(db.String)
     email = db.Column(db.String)
-    password = db.Column(db.String(128))
+    password = db.Column(db.Unicode)
     
     images = db.relationship("Image", back_populates="user")
 

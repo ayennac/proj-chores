@@ -1,4 +1,4 @@
-"""Server for ghibli data viz ."""
+"""Server for chore buddy ."""
 
 from flask import (Flask, render_template, request, flash, session,
                    redirect, jsonify)
@@ -12,6 +12,8 @@ import crud
 
 from model import connect_to_db, db, Image, User
 
+import bcrypt
+
 app = Flask(__name__, template_folder='templates')
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
@@ -20,7 +22,6 @@ app.jinja_env.undefined = StrictUndefined
 CLOUDINARY_KEY = os.environ['CLOUDINARY_KEY']
 CLOUDINARY_SECRET = os.environ['CLOUDINARY_SECRET']
 CLOUD_NAME = "dvrzkwd2m"
-
 
 
 @app.route('/')
@@ -42,7 +43,7 @@ def signup_user():
     lname = request.json.get('lastname')
     username = request.json.get('username')
     email = request.json.get('email')
-    password = request.json.get('signpassword')
+    password = request.json.get('signpassword')    
     try:
         if crud.get_user_by_email(email):
             result_code = False
@@ -68,9 +69,11 @@ def login_user():
     """Login user"""
     username = request.json.get('username')
     password = request.json.get('password')
+    password_encoded = password.encode('utf-8')
+
     try:
         potential_user = crud.get_user_by_username(username)
-        if potential_user.password == password:
+        if bcrypt.checkpw(password_encoded,potential_user.password.encode('utf-8')):
             session['user_id'] = potential_user.user_id
             result_code = True
         else:
@@ -146,6 +149,7 @@ def edit_image():
     image = crud.get_image_by_image_id(image_id)
     alt_text = request.form.get("edit-alt-text")
     description = request.form.get("edit-img-description")
+    #bool on a script will always make this submitted 
     submit_public = bool(request.form.get("edit-img-submitted"))
    
     image.description = description
@@ -169,6 +173,7 @@ def admin_edit_status():
     image.submission_status = image_approval
 
     db.session.commit()
+    # Add logic on what happens to the public status if they do get approved
 
     result_code = True
 

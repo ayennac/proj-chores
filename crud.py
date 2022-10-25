@@ -4,11 +4,18 @@ from model import db, Image, connect_to_db, User
 
 from random import choice
 
+import bcrypt
+
 
 def create_new_user(username, fname, lname, email, password):
     """Return a new User object"""
-    user = User(username=username, fname=fname, lname =lname, email =email, password=password)
+    encoded_password = password.encode('utf-8')
+    hashed_password = bcrypt.hashpw(encoded_password, bcrypt.gensalt())
+    hashed_password = hashed_password.decode('utf-8')
+    user = User(username=username, fname=fname, lname =lname, email =email, password=hashed_password)
     return user
+
+# https://stackoverflow.com/questions/34548846/flask-bcrypt-valueerror-invalid-salt
 
 def get_user_by_user_id(user_id):
     """Return a user from user_id"""
