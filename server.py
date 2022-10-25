@@ -73,6 +73,7 @@ def login_user():
 
     try:
         potential_user = crud.get_user_by_username(username)
+        print(potential_user.password)
         if bcrypt.checkpw(password_encoded,potential_user.password.encode('utf-8')):
             session['user_id'] = potential_user.user_id
             result_code = True
@@ -80,7 +81,6 @@ def login_user():
             result_code = False
     except AttributeError:
         result_code = False
-    
     return jsonify({'code': result_code})
 
 @app.route("/logout")
