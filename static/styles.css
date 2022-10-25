@@ -43,11 +43,13 @@ section#footer{
 section#squiggle-background{
   background-image:url("/static/green-background-squiggle.svg");
   height: 200px;
+  zoom:1.1;
 }
 section#squiggle-background-reverse{
   background-image:url("/static/green-background-squiggle.svg");
   height: 200px;
   transform: rotate(180deg);
+  zoom:1.1;
 }
 
 section.green-background{

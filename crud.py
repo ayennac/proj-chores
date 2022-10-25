@@ -9,13 +9,16 @@ import bcrypt
 
 def create_new_user(username, fname, lname, email, password):
     """Return a new User object"""
-    encoded_password = password.encode('utf-8')
-    hashed_password = bcrypt.hashpw(encoded_password, bcrypt.gensalt())
-    hashed_password = hashed_password.decode('utf-8')
+    hashed_password = set_password(password)
     user = User(username=username, fname=fname, lname =lname, email =email, password=hashed_password)
     return user
 
-# https://stackoverflow.com/questions/34548846/flask-bcrypt-valueerror-invalid-salt
+def set_password(password):
+    """Returns a hashed password created by bcrypt"""
+    encoded_password = password.encode('utf-8')
+    hashed_password = bcrypt.hashpw(encoded_password, bcrypt.gensalt())
+    hashed_password = hashed_password.decode('utf-8')
+    return hashed_password
 
 def get_user_by_user_id(user_id):
     """Return a user from user_id"""
@@ -23,7 +26,7 @@ def get_user_by_user_id(user_id):
 
 def get_all_users_images(user_id):
     """Return all images from a user"""
-    return Image.query.filter(User.user_id ==user_id).all()
+    return Image.query.filter(User.user_id == user_id).all()
 
 def get_all_images():
     """Return a list of images"""
@@ -58,6 +61,7 @@ def get_random_user():
     return user_chosen
 
 def create_new_image(user, description, image_src, alt_text, submitted, submission_status, public):
+    """Returns a new image"""
     image = Image(user=user,
                     description=description,
                     image_src=image_src,

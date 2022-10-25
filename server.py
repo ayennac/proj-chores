@@ -106,6 +106,8 @@ def show_user_profile():
     return render_template('userprofile.html', 
                             user = user,
                             images = images)
+
+                            
 @app.route('/admin', methods=['GET'])
 def show_admin():
     """Show login page"""
