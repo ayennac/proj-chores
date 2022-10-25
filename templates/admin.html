@@ -32,7 +32,7 @@
                         <td>{{image.image_src}}</td>
                         <td>{{image.submitted}}</td>
                         <td>
-                            <select name = "submission-status">
+                            <select id = "submission-status-{{image.image_id}}" name = "submission-status">
                             <option value ="{{image.submission_status}}">{{image.submission_status}}</option>
                             <option value = "Pending"> Pending</option>
                             <option value = "Not Submitted">Not Submitted</option>
@@ -50,4 +50,8 @@
 </div>
 
 {%endblock%}
+
+{% block after_body %}
+<script src = "static/admin-functions.js"></script>
+{% endblock %}  
 

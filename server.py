@@ -144,21 +144,11 @@ def edit_image():
     image_id = request.form.get("edit-img-id")
 
     image = crud.get_image_by_image_id(image_id)
-    img_src = request.files["edit-img"]
     alt_text = request.form.get("edit-alt-text")
     description = request.form.get("edit-img-description")
     submit_public = bool(request.form.get("edit-img-submitted"))
-
-    cloudinary_request = cloudinary.uploader.upload(img_src,
-                                                    api_key=CLOUDINARY_KEY,
-                                                    api_secret=CLOUDINARY_SECRET,
-                                                    cloud_name=CLOUD_NAME,
-                                                    resource_type = "video")
-    cloudinary_img_src = cloudinary_request['secure_url']
-
-    
+   
     image.description = description
-    image.image_src = cloudinary_img_src
     image.alt_text = alt_text
     image.submitted = submit_public
 
@@ -169,9 +159,20 @@ def edit_image():
     return redirect("/userprofile")
 
 
-@app.route('/admin-edit-status', methods=['POST'])
+@app.route('/admin-edit-status')
 def admin_edit_status():
-    pass
+    image_id = request.args.get("image_id")
+    image_approval = request.args.get("image_approval")
+
+    image = crud.get_image_by_image_id(image_id)
+
+    image.submission_status = image_approval
+
+    db.session.commit()
+
+    result_code = True
+
+    return jsonify({'code': result_code})
 
 
 @app.route('/view-image')
