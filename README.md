@@ -4,7 +4,9 @@ ChoreBuddy is a web app that uses the principles of body doubling and community 
 
 
 ## Features
-To watch a demo of the app, [![watch this youtube video](https://img.youtube.com/vi/3MLRlw7La2M/default.jpg)](https://youtu.be/3MLRlw7La2M). A user has two main functions on ChoreBuddy which are to either watch videos or to submit a video doing chores to the public video repository. An admin user has the ability to delete and moderate videos sent into the public video repository. 
+To watch a demo of the app, [![watch this youtube video](https://img.youtube.com/vi/3MLRlw7La2M/default.jpg)](https://youtu.be/3MLRlw7La2M). 
+
+A user has two main functions on ChoreBuddy which are to either watch videos or to submit a video doing chores to the public video repository. An admin user has the ability to delete and moderate videos sent into the public video repository. 
 
 ## Tech Stack
 
