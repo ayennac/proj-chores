@@ -58,13 +58,13 @@ Run the app:
 You can now navigate to 'localhost:5000/' to access ChoreBuddy
 
 ## Known Bugs
-[] It takes a LONG time for videos to upload to the Cloudinary API
-[] The app is deployed on AWS, but the service comes down intermittently.
+- [ ] It takes a LONG time for videos to upload to the Cloudinary API
+- [ ] The app is deployed on AWS, but the service comes down intermittently.
 
 
 ## ChoreBuddy 2.0 Next Steps
-[] Work through bugs listed above 
-[] Build out the admin functions 
-[] Create a tagging system so that users can filter and view certain types of chore videos
+- [ ] Work through bugs listed above 
+- [ ] Build out the admin functions   
+- [ ] Create a tagging system so that users can filter and view certain types of chore videos
 
 
