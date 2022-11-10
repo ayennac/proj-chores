@@ -27,26 +27,32 @@ Cloudinary API
 ## Installation 
 To run ChoreBudy on your own machine: 
 
-Fork this repo: 
+Fork this repo:  
+
 `git clone https://github.com/ayennac/proj-chores.git`
 
-Create and activate a virtual environment inside your ChoreBuddy directory:
+Create and activate a virtual environment inside your ChoreBuddy directory:  
+
 `$ virtualenv`
 `$ source env/bin/activate`
 
-Install the dependencies:
+Install the dependencies:  
+
 `pip3 install -r requirements.txt`
 
 Sign up for [Cloudinary API](https://cloudinary.com/) and save your Cloudinary Key and Cloudinary Secret in a `secrets.sh` file 
 
-Source your keys form secrets.sh into your virtual environment 
+Source your keys form secrets.sh into your virtual environment:  
+
 `source secret.sh`
 
-Set up the database
+Set up the database:  
+
 `createdb images`
 `python3 seed_database.py`
 
-Run the app
+Run the app:  
+
 `python3 server.py`
 
 You can now navigate to 'localhost:5000/' to access ChoreBuddy
